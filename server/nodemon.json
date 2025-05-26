@@ -6,7 +6,7 @@
   "ignore": [
     "src/**/*.test.ts"
   ],
-  "exec": "tsx ./src/index.ts",
+  "exec": "ts-node ./src/index.ts",
   "legacyWatch": true,
   "signal": "SIGTERM"
 }
