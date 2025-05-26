@@ -4,7 +4,7 @@
   "description": "",
   "license": "ISC",
   "author": "",
-  "type": "module",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "compile": "tsc",
@@ -13,14 +13,23 @@
   },
   "dependencies": {
     "@apollo/server": "^4.12.1",
+    "@typegoose/typegoose": "^12.16.0",
+    "bcrypt": "^6.0.0",
+    "class-validator": "^0.14.2",
     "dotenv": "^16.5.0",
     "graphql": "^16.11.0",
-    "mongoose": "^8.15.0"
+    "graphql-scalars": "^1.24.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.15.0",
+    "reflect-metadata": "^0.2.2",
+    "type-graphql": "^2.0.0-rc.2"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.15.21",
     "nodemon": "^3.1.10",
-    "tsx": "^4.19.4",
+    "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
 }
