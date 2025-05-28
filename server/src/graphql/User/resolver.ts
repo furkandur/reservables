@@ -8,9 +8,9 @@ export default class UserResolver {
     this.userService = new UserService();
   }
 
-  @Mutation(() => User)
-  createUser(@Arg("input") input: CreateUserInput) {
-    return this.userService.createUser(input);
+  @Mutation(() => String)
+  signup(@Arg("input") input: CreateUserInput, @Ctx() context: any) {
+    return this.userService.signup(input, context);
   }
 
   @Mutation(() => String)

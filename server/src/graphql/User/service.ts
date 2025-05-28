@@ -1,22 +1,55 @@
 import { GraphQLError } from "graphql";
-import { CreateUserInput, LoginInput, UserModel } from "./schema";
+import { CreateUserInput, LoginInput, User, UserModel } from "./schema";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import { JWT_SECRET } from "../../utils/constants";
 import { signJwt } from "../../utils/jwt";
 import Context from "../types/context";
+import mongoose from "mongoose";
+
+const { MongoServerError } = mongoose.mongo;
 
 class UserService {
-  async createUser(input: CreateUserInput) {
-    return UserModel.create(input);
-  }
-
   async getUsers() {
     return UserModel.find();
   }
 
   async getUserById(id: string) {
     return UserModel.findById(id);
+  }
+
+  async signup(input: CreateUserInput, context: Context) {
+    try {
+      const user = await UserModel.create(input);
+      const userForToken = {
+        ...user.toObject(),
+        password: undefined, // Exclude password from the token
+      };
+      const token = signJwt(userForToken);
+
+      context.res.setHeader("Authorization", token);
+
+      return token;
+    } catch (error) {
+      if (error instanceof MongoServerError) {
+        if (error.code === 11000) {
+          throw new GraphQLError("User already exists", {
+            extensions: {
+              code: "USER_ALREADY_EXISTS",
+              http: {
+                status: 400,
+              },
+            },
+          });
+        }
+      }
+      throw new GraphQLError("Failed to create user", {
+        extensions: {
+          code: "INTERNAL_SERVER_ERROR",
+          http: {
+            status: 500,
+          },
+        },
+      });
+    }
   }
 
   async login(input: LoginInput, context: Context) {
@@ -50,9 +83,7 @@ class UserService {
 
     const token = signJwt(userForToken);
 
-    if (context.res && typeof context.res.setHeader === "function") {
-      context.res.setHeader("Authorization", token);
-    }
+    context.res.setHeader("Authorization", token);
 
     return token;
   }
