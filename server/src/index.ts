@@ -19,6 +19,7 @@ const startApolloServer = async () => {
   const schema = await buildSchema({
     resolvers,
     authChecker,
+    validate: true,
   });
 
   // Create the Apollo Server
