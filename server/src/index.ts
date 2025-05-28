@@ -8,6 +8,7 @@ import { buildSchema } from "type-graphql";
 import { resolvers } from "./graphql";
 import { verifyJwt } from "./utils/jwt";
 import { User } from "./graphql/User/schema";
+import authChecker from "./utils/authChecker";
 
 const startApolloServer = async () => {
   // connect to MongoDB
@@ -17,6 +18,7 @@ const startApolloServer = async () => {
   // Build the schema
   const schema = await buildSchema({
     resolvers,
+    authChecker,
   });
 
   // Create the Apollo Server
@@ -31,7 +33,7 @@ const startApolloServer = async () => {
       if (authHeader) {
         user = verifyJwt<User>(authHeader);
       }
-      return { user };
+      return { req, res, user };
     },
     listen: { port: 4000 },
   });

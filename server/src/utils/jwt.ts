@@ -2,14 +2,20 @@ import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "./constants";
 
 export function signJwt(object: Object, options?: jwt.SignOptions | undefined) {
-  return jwt.sign(object, JWT_SECRET, {
+  const token = jwt.sign(object, JWT_SECRET, {
     ...(options && options),
   });
+
+  return `Bearer ${token}`;
 }
 
 export function verifyJwt<T>(token: string): T | null {
   try {
-    return jwt.verify(token, JWT_SECRET) as T;
+    const cleanedToken = token.replace("Bearer ", "");
+    if (!cleanedToken) {
+      return null;
+    }
+    return jwt.verify(cleanedToken, JWT_SECRET) as T;
   } catch (error) {
     return null;
   }

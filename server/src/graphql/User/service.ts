@@ -41,9 +41,18 @@ class UserService {
       throw error;
     }
 
-    console.log(user);
+    const userForToken = {
+      ...user,
+      password: undefined, // Exclude password from the token
+    };
 
-    const token = signJwt(user);
+    console.log(userForToken);
+
+    const token = signJwt(userForToken);
+
+    if (context.res && typeof context.res.setHeader === "function") {
+      context.res.setHeader("Authorization", token);
+    }
 
     return token;
   }
