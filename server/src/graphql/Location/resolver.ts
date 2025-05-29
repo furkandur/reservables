@@ -32,6 +32,11 @@ export default class LocationResolver {
     return this.locationService.createLocation(input, context);
   }
 
+  @Mutation(() => Location, { nullable: true })
+  deleteLocation(@Arg("id") id: string, @Ctx() context: any) {
+    return this.locationService.deleteLocation(id, context);
+  }
+
   @Query(() => [Location], { nullable: true })
   locations() {
     return this.locationService.getLocations();
