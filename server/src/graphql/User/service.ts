@@ -13,6 +13,7 @@ class UserService {
   }
 
   async getUserById(id: string) {
+    console.log("gerUserById()");
     return UserModel.findById(id);
   }
 

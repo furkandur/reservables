@@ -9,6 +9,7 @@ import { resolvers } from "./graphql";
 import { verifyJwt } from "./utils/jwt";
 import { User } from "./graphql/User/schema";
 import authChecker from "./utils/authChecker";
+import { createUserDataLoader } from "./graphql/User/loader";
 
 const startApolloServer = async () => {
   // connect to MongoDB
@@ -34,7 +35,10 @@ const startApolloServer = async () => {
       if (authHeader) {
         user = verifyJwt<User>(authHeader);
       }
-      return { req, res, user };
+      const dataloaders = {
+        userLoader: createUserDataLoader(),
+      };
+      return { req, res, user, dataloaders };
     },
     listen: { port: 4000 },
   });

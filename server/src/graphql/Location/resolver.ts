@@ -12,6 +12,7 @@ import LocationService from "./service";
 import { CreateLocationInput, Location } from "./schema";
 import UserService from "../User/service";
 import { User } from "../User/schema";
+import Context from "../types/context";
 
 @Resolver(() => Location)
 export default class LocationResolver {
@@ -48,7 +49,12 @@ export default class LocationResolver {
   }
 
   @FieldResolver(() => User)
-  async createdBy(@Root() location: Location) {
-    return this.userService.getUserById(location.createdBy.toString());
+  async createdBy(@Root() location: Location, @Ctx() context: Context) {
+    const userId =
+      typeof location.createdBy == "string"
+        ? location.createdBy
+        : location.createdBy.toString();
+
+    return context.dataloaders.userLoader.load(userId);
   }
 }

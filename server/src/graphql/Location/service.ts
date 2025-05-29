@@ -12,10 +12,12 @@ class LocationService {
   }
 
   async createLocation(input: CreateLocationInput, context: Context) {
-    return LocationModel.create({
+    const location = await LocationModel.create({
       ...input,
       createdBy: context.user?._id,
     });
+
+    return location.toObject();
   }
 
   async deleteLocation(id: string, context: Context) {
