@@ -1,15 +1,15 @@
 services:
   app:
-    image: resv-front-dev
+    image: resv-fe-dev
     build:
       context: ./client
       dockerfile: dev.Dockerfile
     volumes:
       - ./client:/usr/src/app
-    container_name: projectr-front-dev
+    container_name: resv-fe-dev
 
   server:
-    image: resv-backend-dev
+    image: resv-be-dev
     build:
       context: ./server
       dockerfile: dev.Dockerfile
@@ -17,7 +17,7 @@ services:
       - ./server:/usr/src/app
     env_file:
       - ./server/.env.dev
-    container_name: projectr-backend-dev
+    container_name: resv-be-dev
 
   nginx:
     image: nginx:1.20.1
@@ -25,7 +25,7 @@ services:
       - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
     ports:
       - 8080:80
-    container_name: reverse-proxy
+    container_name: resv-nginx-dev
     depends_on:
       - app
 
