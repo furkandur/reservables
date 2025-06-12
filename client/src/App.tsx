@@ -4,6 +4,7 @@ import AppHeader from "./components/AppHeader";
 import "./index.css";
 import Landing from "./pages/Landing";
 import NotFound from "./pages/NotFound";
+import Reservables from "./pages/Reservables";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Landing />} />
+        <Route path="/locations" element={<Reservables />} />
       </Routes>
       <AppFooter />
     </div>

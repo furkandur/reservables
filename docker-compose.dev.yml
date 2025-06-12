@@ -6,6 +6,8 @@ services:
       dockerfile: dev.Dockerfile
     volumes:
       - ./client:/usr/src/app
+    env_file:
+      - ./client/.env.dev
     container_name: resv-fe-dev
 
   server:
