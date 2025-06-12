@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 
@@ -11,11 +12,21 @@ const AppHeader = () => {
           </h1>
         </div>
         <div className="flex items-center gap-2 h-8">
-          <Button variant="link">Home</Button>
-          <Button variant="link">Locations</Button>
-          <Button variant="link">About</Button>
-          <Button variant="link">Contact</Button>
-          <Button variant="default">Login</Button>
+          <Link to="/">
+            <Button variant="link">Home</Button>
+          </Link>
+          <Link to="/locations">
+            <Button variant="link">Locations</Button>
+          </Link>
+          <Link to="/about">
+            <Button variant="link">About</Button>
+          </Link>
+          <Link to="/contact">
+            <Button variant="link">Contact</Button>
+          </Link>
+          <Link to="/login">
+            <Button variant="default">Login</Button>
+          </Link>
         </div>
       </div>
       <Separator />
