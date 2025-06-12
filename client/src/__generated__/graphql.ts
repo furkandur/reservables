@@ -16,7 +16,7 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
-export type CreateLocationInput = {
+export type CreateReservableInput = {
   address: Scalars['String']['input'];
   description?: InputMaybe<Scalars['String']['input']>;
   name: Scalars['String']['input'];
@@ -40,16 +40,6 @@ export type Days =
   | 'TUESDAY'
   | 'WEDNESDAY';
 
-export type Location = {
-  __typename?: 'Location';
-  _id: Scalars['ID']['output'];
-  address: Scalars['String']['output'];
-  createdBy: User;
-  description?: Maybe<Scalars['String']['output']>;
-  name: Scalars['String']['output'];
-  openDays: Array<OpenDay>;
-};
-
 export type LoginInput = {
   email: Scalars['String']['input'];
   password: Scalars['String']['input'];
@@ -57,19 +47,19 @@ export type LoginInput = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  createLocation: Location;
-  deleteLocation?: Maybe<Location>;
+  createReservable: Reservable;
+  deleteReservable?: Maybe<Reservable>;
   login: Scalars['String']['output'];
   signup: Scalars['String']['output'];
 };
 
 
-export type MutationCreateLocationArgs = {
-  input: CreateLocationInput;
+export type MutationCreateReservableArgs = {
+  input: CreateReservableInput;
 };
 
 
-export type MutationDeleteLocationArgs = {
+export type MutationDeleteReservableArgs = {
   id: Scalars['String']['input'];
 };
 
@@ -98,21 +88,31 @@ export type OpenDayInput = {
 
 export type Query = {
   __typename?: 'Query';
-  location?: Maybe<Location>;
-  locations?: Maybe<Array<Location>>;
   me?: Maybe<User>;
+  reservable?: Maybe<Reservable>;
+  reservables?: Maybe<Array<Reservable>>;
   user?: Maybe<User>;
   users?: Maybe<Array<User>>;
 };
 
 
-export type QueryLocationArgs = {
+export type QueryReservableArgs = {
   id: Scalars['String']['input'];
 };
 
 
 export type QueryUserArgs = {
   id: Scalars['String']['input'];
+};
+
+export type Reservable = {
+  __typename?: 'Reservable';
+  _id: Scalars['ID']['output'];
+  address: Scalars['String']['output'];
+  createdBy: User;
+  description?: Maybe<Scalars['String']['output']>;
+  name: Scalars['String']['output'];
+  openDays: Array<OpenDay>;
 };
 
 export type User = {
@@ -123,10 +123,10 @@ export type User = {
   surname: Scalars['String']['output'];
 };
 
-export type AllLocationsQueryVariables = Exact<{ [key: string]: never; }>;
+export type AllReservablesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type AllLocationsQuery = { __typename?: 'Query', locations?: Array<{ __typename?: 'Location', _id: string, name: string, description?: string | null, address: string, openDays: Array<{ __typename?: 'OpenDay', day: Days, startHour: string, endHour: string }>, createdBy: { __typename?: 'User', _id: string, name: string, surname: string, email: string } }> | null };
+export type AllReservablesQuery = { __typename?: 'Query', reservables?: Array<{ __typename?: 'Reservable', _id: string, name: string, description?: string | null, address: string, openDays: Array<{ __typename?: 'OpenDay', day: Days, startHour: string, endHour: string }>, createdBy: { __typename?: 'User', _id: string, name: string, surname: string, email: string } }> | null };
 
 
-export const AllLocationsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"allLocations"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"locations"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"openDays"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"day"}},{"kind":"Field","name":{"kind":"Name","value":"startHour"}},{"kind":"Field","name":{"kind":"Name","value":"endHour"}}]}},{"kind":"Field","name":{"kind":"Name","value":"createdBy"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"surname"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]}}]} as unknown as DocumentNode<AllLocationsQuery, AllLocationsQueryVariables>;
+export const AllReservablesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"allReservables"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"reservables"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"openDays"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"day"}},{"kind":"Field","name":{"kind":"Name","value":"startHour"}},{"kind":"Field","name":{"kind":"Name","value":"endHour"}}]}},{"kind":"Field","name":{"kind":"Name","value":"createdBy"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"surname"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]}}]} as unknown as DocumentNode<AllReservablesQuery, AllReservablesQueryVariables>;

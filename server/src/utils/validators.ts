@@ -3,7 +3,7 @@ import {
   ValidationOptions,
   ValidationArguments,
 } from "class-validator";
-import { OpenDayInput } from "../graphql/Location/schema";
+import { OpenDayInput } from "../graphql/Reservable/schema";
 
 export function IsUniqueDays(validationOptions?: ValidationOptions) {
   return function (Object: Object, propertyName: string) {

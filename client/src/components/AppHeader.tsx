@@ -15,8 +15,8 @@ const AppHeader = () => {
           <Link to="/">
             <Button variant="link">Home</Button>
           </Link>
-          <Link to="/locations">
-            <Button variant="link">Locations</Button>
+          <Link to="/reservables">
+            <Button variant="link">Reservables</Button>
           </Link>
           <Link to="/about">
             <Button variant="link">About</Button>

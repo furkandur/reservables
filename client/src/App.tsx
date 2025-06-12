@@ -13,7 +13,7 @@ const App = () => {
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Landing />} />
-        <Route path="/locations" element={<Reservables />} />
+        <Route path="/reservables" element={<Reservables />} />
       </Routes>
       <AppFooter />
     </div>

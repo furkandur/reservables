@@ -32,7 +32,7 @@ export class OpenDay {
 }
 
 @ObjectType()
-export class Location {
+export class Reservable {
   @Field(() => ID)
   _id: mongoose.Types.ObjectId;
 
@@ -58,7 +58,7 @@ export class Location {
 }
 
 @InputType()
-export class CreateLocationInput {
+export class CreateReservableInput {
   @Field(() => String)
   @MinLength(3)
   name: string;
@@ -94,4 +94,4 @@ export class OpenDayInput {
   endHour: string;
 }
 
-export const LocationModel = getModelForClass(Location);
+export const ReservableModel = getModelForClass(Reservable);
