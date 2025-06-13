@@ -1,7 +1,7 @@
 import { gql } from "@/__generated__";
 import { useQuery } from "@apollo/client";
-import QueryResult from "./query-result";
-import ReservableCard from "@/containers/reservable-card";
+import QueryResult from "./QueryResult";
+import ReservableCard from "@/containers/ReservableCard";
 import {
   Carousel,
   CarouselContent,

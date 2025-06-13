@@ -1,6 +1,6 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
-import Container from "@/containers/app-container";
+import Container from "@/containers/AppContainer";
 
 const Landing = () => {
   const array = [1, 2, 3];

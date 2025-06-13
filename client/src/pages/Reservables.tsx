@@ -1,5 +1,5 @@
 import ReservableList from "@/components/ReservableList";
-import Container from "@/containers/app-container";
+import Container from "@/containers/AppContainer";
 
 const Reservables = () => {
   return (
