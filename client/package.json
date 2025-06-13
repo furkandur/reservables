@@ -18,11 +18,13 @@
     "@tailwindcss/vite": "^4.1.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.6.0",
     "graphql": "^16.11.0",
     "lucide-react": "^0.514.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router": "^7.6.2",
+    "react-spinners": "^0.17.0",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.8"
   },

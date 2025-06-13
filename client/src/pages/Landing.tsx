@@ -1,10 +1,11 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
+import Container from "@/containers/app-container";
 
 const Landing = () => {
   const array = [1, 2, 3];
   return (
-    <div className="container mx-auto px-4 sm:px-15 py-6 space-y-6">
+    <Container>
       <AspectRatio ratio={16 / 9} className="bg-muted rounded-lg">
         <img
           src="https://westeurope1-mediap.svc.ms/transform/thumbnail?provider=spo&farmid=188868&inputFormat=jpg&cs=fFNQTw&docid=https%3A%2F%2Fmy.microsoftpersonalcontent.com%2F_api%2Fv2.0%2Fdrives%2Fb!nFHNXVXH4UKYXH8EFJ2DcSTcaLXmck1LjbYRb8XWGe6YYcrtKgNhRL9VSqpz3min%2Fitems%2F01KKBJHQBQTURGJR4YQREI4I3PYUMHDS5V%3Ftempauth%3Dv1e.eyJzaXRlaWQiOiI1ZGNkNTE5Yy1jNzU1LTQyZTEtOTg1Yy03ZjA0MTQ5ZDgzNzEiLCJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvbXkubWljcm9zb2Z0cGVyc29uYWxjb250ZW50LmNvbUA5MTg4MDQwZC02YzY3LTRjNWItYjExMi0zNmEzMDRiNjZkYWQiLCJleHAiOiIxNzQ5NzUxMjAwIn0.wNo9ABe2EO7QKZVyWNFtC-apBps_dVr9jm-y2jS5at_03ULNWsQX46XCrck3bsjZaoA9WFqG_mkB-3l5wwlUB1RwByCqQZogmfZ5pEY6DlcDVCkPb_iEWN4qCT0PUPNSM8U11ssdix6ooHAlVDDac65T_Gx6JMhbzo8v2e6O5cYufiv0HdM_NkJqLugbLSsDzqHrWg-_-aQfXtj6fsgbGxptIz0xr1hAJn0akAHVhJu-BIPTn0lm_f4Bxtx2Gx6uP2SNvtNuZs0XNP6-MohjrtYBd5YS2LxRKQQTuIie1SB9xzdqI3O6eCTUXawddx5qakA2Dft92zf-uAuUscJySpKGJsQhdg9ogfFM5cR2VPJvfL_JNOeQFUYB2Nh6xJEGLvtlyQfISCkbKxuVYUEJViuV3VTU_Aq_xOfVe9x4lS0fb7yv_PyNmWDmVDtcMn2HIP5ejSBadicci7OgoKSIG8NPDTwK5DYqhiVKQ-vBBpc.pCgu6pVFjFXc6g3oKJFD1TvCAKsGtwUn464L1jGtlik%26version%3DPublished&cb=63885331787&encodeFailures=1&width=827&height=827"
@@ -89,7 +90,7 @@ const Landing = () => {
         </h2>
         <Button>Sign Up Now!</Button>
       </div>
-    </div>
+    </Container>
   );
 };
 
