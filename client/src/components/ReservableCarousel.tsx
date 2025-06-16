@@ -40,11 +40,11 @@ const ReservableList = () => {
     <>
       <QueryResult data={data} loading={loading} error={error}>
         <Carousel className="w-full">
-          <CarouselContent className="gap-2">
+          <CarouselContent className="my-1">
             {data?.reservables?.map((reservable) => (
               <CarouselItem
                 key={reservable._id}
-                className="basis-1/2 md:basis-1/3 lg:basis-1/4"
+                className="basis-1/1 md:basis-1/2 lg:basis-1/4"
               >
                 <ReservableCard
                   key={reservable._id}

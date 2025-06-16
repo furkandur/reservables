@@ -1,20 +1,17 @@
-import ReservableList from "@/components/ReservableList";
+import ReservableGrid from "@/components/ReservableGrid";
+import ReservableCarousel from "@/components/ReservableCarousel";
 import Container from "@/containers/AppContainer";
 
 const Reservables = () => {
   return (
     <Container>
-      <div className=" space-y-3">
-        <h2 className="scroll-m-20 text-2xl font-semibold">
-          Nearby Reservables
-        </h2>
-        <ReservableList />
+      <div className="space-y-6">
+        <h2 className="scroll-m-20 text-3xl font-bold">Popular Reservables</h2>
+        <ReservableCarousel />
       </div>
-      <div className="mt-8 space-y-3">
-        <h2 className="scroll-m-20 text-2xl font-semibold">
-          Other Reservables
-        </h2>
-        <ReservableList />
+      <div className="mt-16 space-y-6">
+        <h2 className="scroll-m-20 text-3xl font-bold">Nearby Reservables</h2>
+        <ReservableGrid />
       </div>
     </Container>
   );
