@@ -8,7 +8,7 @@ class ReservableService {
   }
 
   async getReservableById(id: string) {
-    return ReservableModel.findById(id);
+    return ReservableModel.findById(id).lean();
   }
 
   async createReservable(input: CreateReservableInput, context: Context) {
